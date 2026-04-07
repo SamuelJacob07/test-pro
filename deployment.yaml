@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-pro
+spec:
+  replicas: 1   # IMPORTANT (low memory)
+  selector:
+    matchLabels:
+      app: test-pro
+  template:
+    metadata:
+      labels:
+        app: test-pro
+    spec:
+      containers:
+      - name: test-pro
+        image: <your-dockerhub-username>/test-pro:latest
+        ports:
+        - containerPort: 5000
